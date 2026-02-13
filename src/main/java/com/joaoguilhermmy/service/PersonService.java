@@ -1,12 +1,15 @@
 package com.joaoguilhermmy.service;
 
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.joaoguilhermmy.data.dto.PersonDTO;
 import com.joaoguilhermmy.exception.ResourceNotFoundExcpetion;
+import com.joaoguilhermmy.mapper.ObjectMapper;
 import com.joaoguilhermmy.model.Person;
 import com.joaoguilhermmy.repository.PersonRepository;
 
@@ -16,25 +19,27 @@ public class PersonService {
     @Autowired
     private PersonRepository repository;
 
-    private Logger logger = Logger.getLogger(PersonService.class.getName());
+    private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
 
-    public List<Person> findaAll() {
+    public List<PersonDTO> findaAll() {
         logger.info("Finding all People!");
-        return repository.findAll();
+        return ObjectMapper.parseListObjects(repository.findAll(), PersonDTO.class);
     }
 
-    public Person findById(Long id) {
+    public PersonDTO findById(Long id) {
         logger.info("Finding one Person!");
-        return repository.findById(id)
+        var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundExcpetion("Person not found with this ID."));
+        return ObjectMapper.parseObject(entity, PersonDTO.class);
     }
 
-    public Person insert(Person person) {
+    public PersonDTO insert(PersonDTO person) {
         logger.info("Creating one Person!");
-        return repository.save(person);
+        var entity = ObjectMapper.parseObject(person, Person.class);
+        return ObjectMapper.parseObject(repository.save(entity), PersonDTO.class);
     }
 
-    public Person update(Person person) {
+    public PersonDTO update(PersonDTO person) {
 
         logger.info("Updating one Person!");
         Person entity = repository.findById(person.getId())
@@ -45,7 +50,7 @@ public class PersonService {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        return repository.save(entity);
+        return ObjectMapper.parseObject(repository.save(entity), PersonDTO.class);
     }
 
     public void delete(Long id) {
