@@ -1,4 +1,4 @@
-package com.joaoguilhermmy.data.dto;
+package com.joaoguilhermmy.data.dto.V1;
 
 import java.io.Serializable;
 
