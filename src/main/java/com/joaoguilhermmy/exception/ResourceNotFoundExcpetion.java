@@ -3,9 +3,9 @@ package com.joaoguilhermmy.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class UnsupportedMathOperationException extends RuntimeException {
-    public UnsupportedMathOperationException(String msg) {
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundExcpetion extends RuntimeException {
+    public ResourceNotFoundExcpetion(String msg) {
         super(msg);
     }
 }
