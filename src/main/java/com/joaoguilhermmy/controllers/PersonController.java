@@ -14,17 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.joaoguilhermmy.data.dto.V1.PersonDTO;
-import com.joaoguilhermmy.data.dto.V2.PersonDTOV2;
+import com.joaoguilhermmy.data.dto.PersonDTO;
 import com.joaoguilhermmy.service.PersonService;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired
     private PersonService service;
-    // private PersonServices service = new PersonServices();
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<PersonDTO> findAll() {
@@ -39,11 +37,6 @@ public class PersonController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public PersonDTO create(@RequestBody PersonDTO person) {
         return service.create(person);
-    }
-
-    @PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public PersonDTOV2 create(@RequestBody PersonDTOV2 person) {
-        return service.createV2(person);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

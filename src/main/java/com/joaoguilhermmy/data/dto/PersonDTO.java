@@ -1,10 +1,10 @@
-package com.joaoguilhermmy.data.dto.V1;
+package com.joaoguilhermmy.data.dto;
 
 import java.io.Serializable;
 
 public class PersonDTO implements Serializable {
 
-    private static final long seriaVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     private Long id;
     private String firstName;
@@ -87,5 +87,4 @@ public class PersonDTO implements Serializable {
             return false;
         return true;
     }
-
 }

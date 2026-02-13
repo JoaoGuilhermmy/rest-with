@@ -11,10 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.joaoguilhermmy.data.dto.V1.PersonDTO;
-import com.joaoguilhermmy.data.dto.V2.PersonDTOV2;
+import com.joaoguilhermmy.data.dto.PersonDTO;
 import com.joaoguilhermmy.exception.ResourceNotFoundExcpetion;
-import com.joaoguilhermmy.mapper.custom.PersonMapper;
 import com.joaoguilhermmy.model.Person;
 import com.joaoguilhermmy.repository.PersonRepository;
 
@@ -26,9 +24,6 @@ public class PersonService {
 
     @Autowired
     PersonRepository repository;
-
-    @Autowired
-    PersonMapper converter;
 
     public List<PersonDTO> findAll() {
 
@@ -51,14 +46,6 @@ public class PersonService {
         var entity = parseObject(person, Person.class);
 
         return parseObject(repository.save(entity), PersonDTO.class);
-    }
-
-    public PersonDTOV2 createV2(PersonDTOV2 person) {
-
-        logger.info("Creating one Person V2!");
-        var entity = converter.convertDTOtoEntity(person);
-
-        return converter.convertEntityToDTO(repository.save(entity));
     }
 
     public PersonDTO update(PersonDTO person) {
