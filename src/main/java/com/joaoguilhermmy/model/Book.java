@@ -13,21 +13,21 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Table(name = "book")
+@Table(name = "books")
 public class Book implements Serializable {
     private static final long seriaVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "author", nullable = false, length = 80)
+    @Column(name = "author", nullable = false, length = 160)
     private String author;
     @Column(name = "launch_date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date launchDate;
     @Column(name = "price", nullable = false)
     private Double price;
-    @Column(name = "title", nullable = false, length = 100)
+    @Column(name = "title", nullable = false, length = 250)
     private String title;
 
     public Book() {
