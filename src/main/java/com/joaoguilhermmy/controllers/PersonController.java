@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.joaoguilhermmy.controllers.docs.PersonControllerDocs;
 import com.joaoguilhermmy.data.dto.PersonDTO;
-import com.joaoguilhermmy.service.PersonService;
+import com.joaoguilhermmy.unittest.service.PersonService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.joaoguilhermmy.controllers.docs.BookControllerDocs;
 import com.joaoguilhermmy.data.dto.BookDTO;
-import com.joaoguilhermmy.service.BookService;
+import com.joaoguilhermmy.unittest.service.BookService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.http.MediaType;

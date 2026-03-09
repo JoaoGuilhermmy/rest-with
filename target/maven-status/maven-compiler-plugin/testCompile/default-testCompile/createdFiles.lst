@@ -1,0 +1,5 @@
+com\joaoguilhermmy\service\BookServiceTest.class
+com\joaoguilhermmy\unitetest\mapper\mocks\MockPerson.class
+com\joaoguilhermmy\service\PersonServiceTest.class
+com\joaoguilhermmy\Startup.class
+com\joaoguilhermmy\unitetest\mapper\mocks\MockBook.class
