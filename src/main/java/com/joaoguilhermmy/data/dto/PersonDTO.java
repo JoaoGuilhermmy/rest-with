@@ -13,16 +13,8 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
     private String lastName;
     private String address;
     private String gender;
-
+    private boolean enabled;
     public PersonDTO() {
-    }
-
-    public PersonDTO(Long id, String firstName, String lastName, String address, String gender) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.gender = gender;
     }
 
     public Long getId() {
@@ -63,6 +55,14 @@ public class PersonDTO extends RepresentationModel<PersonDTO> implements Seriali
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override
